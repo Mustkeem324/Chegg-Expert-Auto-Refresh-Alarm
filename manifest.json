@@ -1,0 +1,40 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "manifest_version": 3,
+    "name": "Chegg Expert Auto Refresh Alarm",
+    "description": "Extension by VIP SOlutions.",
+    "version": "2.2",
+    "permissions": ["activeTab", "scripting","notifications","tabs","declarativeNetRequest"],
+    "background": {
+      "service_worker": "./scripts/background.js"
+    },
+    "web_accessible_resources": [
+        {
+          "resources": ["sound/alarm.mp3"],
+          "matches": ["<all_urls>"]
+        }
+    ],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["./scripts/content.js","./scripts/expertrefresh.js","./scripts/gsearchdbug.js","./scripts/brainly.js"],
+        "run_at" :"document_idle"
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+      }
+    },
+    "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    },
+    "incognito": "split"
+  }
+  
